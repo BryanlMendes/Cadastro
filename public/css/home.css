@@ -1,0 +1,26 @@
+#cardHome{
+    margin-bottom: 30px;
+    border-color: #134F70;
+    box-shadow: 10px 5px 5px #134F70;
+}
+.labelHome{
+    font-weight: 800;
+    font-size: 18px;
+}
+.divHome{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.divHeader{
+    font-weight: 600;
+    font-size: 28px;
+}
+@media print {
+    .button, .startCard{
+      display:none;  
+    }
+    h2{
+        display:none;
+    }
+    
+}

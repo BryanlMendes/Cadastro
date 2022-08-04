@@ -1,0 +1,88 @@
+
+<h3>Editar Cadastro:</h3>
+
+<div class="card">
+    <div class="card-body">
+        <form action="/motor/edit" method="POST" class="forms">
+        <input type="hidden" name="id" value="{{categoria._id}}" >
+            <div class="row d-flex justify-content-around">
+                <label class="divData">Data:{{categoria.data}}</label>
+                <div class="divClient row">
+                    <label class="label" for="client">Cliente:</label>
+                    <input type="text" name="client" id="client" placeholder="Cliente" class="inputClient" value="{{categoria.client}}">
+                </div>
+            </div>
+            <div class="row d-flex justify-content-around">
+                <div class="row col-6">    
+                    <div class="divInput row">
+                        <label class="label" for="os">OS:</label>
+                        <input type="text" name="os" id="os" placeholder="OS" class="input" value="{{categoria.os}}">
+                        <label class="label" for="proposal">Proposta:</label>
+                        <input type="number" name="proposal" id="proposal" placeholder="Proposta" class="input" value="{{categoria.proposal}}">
+                    </div>
+                </div>
+                <div class="row col-6">
+                    <div class="divInput row">
+                        <label class="label" for="engineBrand">Marca Motor:</label>
+                        <input type="text" name="engineBrand" id="engineBrand" placeholder="Marca Moto"class="input" value="{{categoria.engineBrand}}">
+                        <label class="label" for="turnedOn">Ligado em:</label>
+                        <input type="text" name="turnedOn" id="turnedOn" placeholder="Ligado em" class="input" value="{{categoria.turnedOn}}">
+                    </div>
+                </div>
+                <div class="row col-6">
+                    <div class="divInput row">
+                        <label class="label" for="power">Potência:</label>
+                        <input type="text" name="power" id="power" placeholder="Potência" class="input" value="{{categoria.power}}">
+                        <label class="label" for="rotation">Rotação:</label>
+                        <input type="number" name="rotation" id="rotation" placeholder="Rotação" class="input" value="{{categoria.rotation}}"> 
+                    </div>
+                </div> 
+                <div class="row col-6">
+                    <div class="divInput row">
+                        <label class="label" for="model">Modelo:</label>
+                        <input type="text" name="model" id="model" placeholder="Modelo" class="input" value="{{categoria.model}}">
+                        <label class="label" for="boxNumber">NºCaixa:</label>
+                        <input type="text" name="boxNumber" id="boxNumber" placeholder="NºCaixa" class="input" value="{{categoria.boxNumber}}">
+                    </div>
+                </div>                     
+            </div><!--div class="row d-flex justify-content-around" -->
+            <div class="row d-flex justify-content-around">
+                <div class="row col-6">
+                    <div class="divInput row">
+                        <label class="label" for="type">Tipo:</label>
+                        <input type="text" name="type" id="type" class="input" value="{{categoria.type}}">
+                        <label class="label" for="connectionBox">Caixa de Ligação:</label>
+                        <input type="text" name="connectionBox" id="connectionBox" class="input" value="{{categoria.connectionBox}}">
+                    </div>
+                </div>
+                <div class="row col-6">
+                    <div class="divInput row">
+                        <label class="label" for="flange">Flange:</label>
+                        <input type="text" name="flange" id="flange" class="input" value="{{categoria.flange}}">
+                        <label class="label" for="withFeet">Com pés:</label>
+                        <input type="text" name="withFeet" id="withFeet" class="input" value="{{categoria.withFeet}}">
+                    </div> 
+                </div>
+                <div class="row col-6">
+                    <div class="divInput row">
+                        <label class="label" for="engineStatus">Estado Motor:</label>
+                        <input type="text" name="engineStatus" id="engineStatus" class="input" value="{{categoria.engineStatus}}">
+                        <label class="label" for="pulley">Polia:</label>
+                        <input type="text" name="pulley" id="pulley" class="input" value="{{categoria.pulley}}">
+                    </div> 
+                </div>
+                <div class="row col-6">
+                    <div class="divInput row">
+                        <label class="label" for="voltage">Tensão:</label>
+                        <input type="text" name="voltage" id="voltage" class="input" value="{{categoria.voltage}}">
+                        <label class="label" for="mountingSide">Lado Montagem:</label>
+                        <input type="text" name="mountingSide" id="mountingSide" class="input" value="{{categoria.mountingSide}}">
+
+                    </div> 
+                </div>
+            </div>  
+            <br>
+            <div class="d-flex flex-row-reverse"><button type="submit" class="button"><i class="fa-solid fa-floppy-disk"></i> Salvar</button></div>   
+        </form>
+    </div>
+</div>

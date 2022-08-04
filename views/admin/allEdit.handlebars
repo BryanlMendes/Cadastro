@@ -1,0 +1,221 @@
+
+<h3>Editar Cadastro:</h3>
+
+<div class="card">
+    <div class="card-body">
+        <form action="/motor/edit" method="POST" class="forms">
+        <input type="hidden" name="id" value="{{categoria._id}}" >
+            <div class="row d-flex justify-content-around">
+                <label class="divData">Data:{{categoria.data}}</label>
+                <div class="divClient row">
+                    <label class="label" for="client">Cliente:</label>
+                    <input type="text" name="client" id="client" class="inputClient" value="{{categoria.client}}">
+                </div>
+            </div>
+            <div class="row d-flex justify-content-around">
+                <div class="row col-4">    
+                    <div class="divInput row">
+                        <label class="label" for="os">OS:</label>
+                        <input type="text" name="os" id="os" class="input" value="{{categoria.os}}">
+                        <label class="label" for="rotation">Rotação:</label>
+                        <input type="number" name="rotation" id="rotation" class="input" value="{{categoria.rotation}}"> 
+                    </div>
+                    <div class="divInput row">
+                        <label class="label" for="model">Modelo:</label>
+                        <input type="text" name="model" id="model" class="input" value="{{categoria.model}}">
+                        <label class="label" for="withFeet">Com pés:</label>
+                        <input type="text" name="withFeet" id="withFeet" class="input" value="{{categoria.withFeet}}">                       
+                    </div>
+                    <div class="divInput row">
+                        <label class="label" for="pulley">Polia:</label>
+                        <input type="text" name="pulley" id="pulley" class="input" value="{{categoria.pulley}}">
+                        <label class="label" for="turnedOn">Ligado em:</label>
+                        <input type="text" name="turnedOn" id="turnedOn" class="input" value="{{categoria.turnedOn}}">
+                    </div>
+                    <div class="divInput row">
+                        <label class="label" for="packageDiameter">Diâmetro Pacote:</label>
+                        <input type="text" name="packageDiameter" id="packageDiameter" class="input" value="{{categoria.packageDiameter}}">
+                        <label class="label" for="frontCover">Tampa Dianteira:</label>
+                        <input type="text" name="frontCover" id="frontCover" class="input" value="{{categoria.frontCover}}">
+                    </div> 
+                    <div class="divInput row">
+                        <label class="label" for="frontRing">Anel fix.Dianteiro:</label>
+                        <input type="text" name="frontRing" id="frontRing" class="input" value="{{categoria.frontRing}}">
+                        <label class="label" for="frontBearing">Rolamento Dianteiro:</label>
+                        <input type="text" name="frontBearing" id="frontBearing" class="input" value="{{categoria.frontBearing}}">
+                    </div>
+                    <div class="divInput row">
+                        <label class="label" for="frontRetainer">Retentor Dianteiro:</label>
+                        <input type="text" name="frontRetainer" id="frontRetainer" class="input" value="{{categoria.frontRetainer}}">
+                        <label class="label" for="replaceFrontBearing">Troca Rol.Dianteiro:</label>
+                        <input type="text" name="replaceFrontBearing" id="replaceFrontBearing" class="input" value="{{categoria.replaceFrontBearing}}">
+                    </div>
+                        <div class="divInput row">
+                        <label class="label" for="polypropyleneFan">Ventilador Poliprop:</label>
+                        <input type="text" name="polypropyleneFan" id="polypropyleneFan" class="input" value="{{categoria.polypropyleneFan}}">
+                        <label class="label" for="terminalBoard">Placa de Borne:</label>
+                        <input type="text" name="terminalBoard" id="terminalBoard" class="input" value="{{categoria.terminalBoard}}">
+                    </div> 
+                    <div class="divInput row">
+                        <label class="label" for="connectionBoxCheck">Caixa de Ligação:</label>
+                        <input type="text" name="connectionBoxCheck" id="connectionBoxCheck" class="input" value="{{categoria.connectionBoxCheck}}">
+                        <label class="label" for="rewindElectromagnet">Eletroímã Freio Rebob:</label>
+                        <input type="text" name="rewindElectromagnet" id="rewindElectromagnet" class="input" value="{{categoria.rewindElectromagnet}}">
+                    </div>    
+                    <div class="divInput row">
+                        <label class="label" for="disc">Disco Pastilha:</label>
+                        <input type="text" name="disc" id="disc" class="input" value="{{categoria.disc}}">
+                        <label class="label" for="spring">Mola:</label>
+                        <input type="text" name="spring" id="spring" class="input" value="{{categoria.spring}}">
+                    </div>
+                    <div class="divInput row">
+                        <label class="label" for="makeCover">Fazer Tampa CX Lig:</label>
+                        <input type="text" name="makeCover" id="makeCover" class="input" value="{{categoria.makeCover}}">
+                    </div>        
+                </div>                 
+                <div class="row col-4">         
+                    <div class="divInput row">
+                        <label class="label" for="proposal">Proposta:</label>
+                        <input type="number" name="proposal" id="proposal" class="input" value="{{categoria.proposal}}">
+                        <label class="label" for="power">Potência:</label>
+                        <input type="text" name="power" id="power" class="input" value="{{categoria.power}}">
+                    </div>
+                    <div class="divInput row">
+                        <label class="label" for="type">Tipo:</label>
+                        <input type="text" name="type" id="type" class="input" value="{{categoria.type}}">
+                        <label class="label" for="connectionBox">Caixa de Ligação:</label>
+                        <input type="text" name="connectionBox" id="connectionBox" class="input" value="{{categoria.connectionBox}}">
+                    </div> 
+                    <div class="divInput row">
+                        <label class="label" for="flange">Flange:</label>
+                        <input type="text" name="flange" id="flange" class="input" value="{{categoria.flange}}">
+                        <label class="label" for="concertType">Tipo de Conserto:</label>
+                        <input type="text" name="concertType" id="concertType" class="input" value="{{categoria.concertType}}">
+                    </div> 
+                    <div class="divInput row">
+                        <label class="label" for="packageLength">Comprimento Pacote:</label>
+                        <input type="text" name="packageLength" id="packageLength" class="input" value="{{categoria.packageLength}}">
+                        <label class="label" for="backCover">Tampa Traseira:</label>
+                        <input type="text" name="backCover" id="backCover" class="input" value="{{categoria.backCover}}">
+                    </div> 
+                    <div class="divInput row">
+                        <label class="label" for="backRing">Anel fix.Traseiro:</label>
+                        <input type="text" name="backRing" id="backRing" class="input" value="{{categoria.backRing}}">
+                        <label class="label" for="rearBearing">Rolamento Traseiro:</label>
+                        <input type="text" name="rearBearing" id="rearBearing" class="input" value="{{categoria.rearBearing}}">
+                    </div> 
+                    <div class="divInput row">
+                        <label class="label" for="rearRetainer">Retentor Traseiro:</label>
+                        <input type="text" name="rearRetainer" id="rearRetainer" class="input" value="{{categoria.rearRetainer}}">
+                        <label class="label" for="replaceRearBearing">Troca Rol.Traseiro:</label>
+                        <input type="text" name="replaceRearBearing" id="replaceRearBearing" class="input" value="{{categoria.replaceRearBearing}}">
+                    </div>
+                    <div class="divInput row">
+                        <label class="label" for="aluminumFan">Ventilador Alumínio:</label>
+                        <input type="text" name="aluminumFan" id="aluminumFan" class="input" value="{{categoria.aluminumFan}}">
+                        <label class="label" for="brakeElectromagnet">Eletroímã Freio Nova:</label>
+                        <input type="text" name="brakeElectromagnet" id="brakeElectromagnet" class="input" value="{{categoria.brakeElectromagnet}}">
+                    </div>
+                        <div class="divInput row">
+                        <label class="label" for="bridgeRectifier">Ponte Retificadora:</label>
+                        <input type="text" name="bridgeRectifier" id="bridgeRectifier" class="input" value="{{categoria.bridgeRectifier}}">
+                        <label class="label" for="armor">Armadura:</label>
+                        <input type="text" name="armor" id="armor" class="input" value="{{categoria.armor}}">
+                    </div>  
+                    <div class="divInput row">
+                        <label class="label" for="brakePad">Pastilha de Freio:</label>
+                        <input type="text" name="brakePad" id="brakePad" class="input" value="{{categoria.brakePad}}">
+                        <label class="label" for="centrifugal">Centrifugo:</label>
+                        <input type="text" name="centrifugal" id="centrifugal" class="input" value="{{categoria.centrifugal}}">
+                    </div>
+                    <div class="divInput row">
+                        <label class="label" for="strap">Cinta:</label>
+                        <input type="text" name="strap" id="strap" class="input" value="{{categoria.strap}}">
+                    </div>       
+                </div>
+                <div class="row col-4">
+                    <div class="divInput row">
+                        <label class="label" for="engineBrand">Marca Motor:</label>
+                        <input type="text" name="engineBrand" id="engineBrand" class="input" value="{{categoria.engineBrand}}">
+                        <label class="label" for="boxNumber">NºCaixa:</label>
+                        <input type="text" name="boxNumber" id="boxNumber" class="input" value="{{categoria.boxNumber}}">
+                    </div>
+                    <div class="divInput row">
+                        <label class="label" for="engineStatus">Estado Motor:</label>
+                        <input type="text" name="engineStatus" id="engineStatus" class="input" value="{{categoria.engineStatus}}"><label class="label" for="mountingSide">Lado Montagem:</label>
+                        <input type="text" name="mountingSide" id="mountingSide" class="input" value="{{categoria.mountingSide}}">
+                    </div> 
+                    <div class="divInput row">
+                        <label class="label" for="voltage">Tensão:</label>
+                        <input type="text" name="voltage" id="voltage" class="input" value="{{categoria.voltage}}">
+                        <label class="label" for="burnReason">Motivo da Queima:</label>
+                        <input type="text" name="burnReason" id="burnReason" class="input" value="{{categoria.burnReason}}">
+                    </div> 
+                    <div class="divInput row">
+                        <label class="label" for="grooves">Ranhuras:</label>
+                        <input type="text" name="grooves" id="grooves" class="input" value="{{categoria.grooves}}">
+                        <label class="label" for="adpFan">Adaptação Ventilador:</label>
+                        <input type="text" name="adpFan" id="adpFan" class="input" value="{{categoria.adpFan}}">
+                    </div> 
+                     <div class="divInput row">
+                        <label class="label" for="adpConnectionBox">Adaptação Caixa Lig:</label>
+                        <input type="text" name="adpConnectionBox" id="adpConnectionBox" class="input" value="{{categoria.adpConnectionBox}}">
+                        <label class="label" for="adpDeflector">Adaptação Defletora:</label>
+                        <input type="text" name="adpDeflector" id="adpDeflector" class="input" value="{{categoria.adpDeflector}}">
+                    </div>
+                    <div class="divInput row">
+                        <label class="label" for="capacitor">Capacitor:</label>
+                        <input type="text" name="capacitor" id="capacitor" class="input" value="{{categoria.capacitor}}">
+                        <label class="label" for="capacitorCover">Capa do Capacitor:</label>
+                        <input type="text" name="capacitorCover" id="capacitorCover" class="input" value="{{categoria.capacitorCover}}">
+                    </div>
+                    <div class="divInput row">
+                        <label class="label" for="keyElectronics">Chave Part.Eletrônica:</label>
+                        <input type="text" name="keyElectronics" id="keyElectronics" class="input" value="{{categoria.keyElectronics}}">
+                        <label class="label" for="deflector">Defletora:</label>
+                        <input type="text" name="deflector" id="deflector" class="input" value="{{categoria.deflector}}">
+                    </div>
+                    <div class="divInput row">
+                        <label class="label" for="hollowCarcass">Carcaça Oca:</label>
+                        <input type="text" name="hollowCarcass" id="hollowCarcass" class="input" value="{{categoria.hollowCarcass}}">
+                        <label class="label" for="nightclubCanvas">Disco Lona:</label>
+                        <input type="text" name="nightclubCanvas" id="nightclubCanvas" class="input" value="{{categoria.nightclubCanvas}}">
+                    </div> 
+                    <div class="divInput row">
+                        <label class="label" for="pasta">Massa:</label>
+                        <input type="text" name="pasta" id="pasta" class="input" value="{{categoria.pasta}}">
+                        <label class="label" for="platinum">Platinado:</label>
+                        <input type="text" name="platinum" id="platinum" class="input" value="{{categoria.platinum}}">
+                    </div>
+                    <div class="divInput row">
+                        <label class="label" for="eyelet">Olhal:</label>
+                        <input type="text" name="eyelet" id="eyelet" class="input" value="{{categoria.eyelet}}">
+                    </div>      
+                </div>
+            </div>
+            <div class="row d-flex justify-content-around">
+                <div class="row" style="margin-bottom: 30px;">
+                    <div class="d-flex" style="justify-content:space-around ;">
+                        <div class="divInput row">
+                            <label class="label" for="nameplate">Placa Identidicação:</label>
+                            <input type="text" name="nameplate" id="nameplate" class="input" value="{{categoria.nameplate}}">
+                        </div>
+                         <div class="divInput row">
+                            <label class="label" for="serialNumber">Número de Serie:</label>
+                            <input type="text" name="serialNumber" id="serialNumber" class="input" value="{{categoria.serialNumber}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-around">
+                <div class="divArea row">
+                    <label class="label" for="note">Observações:</label>
+                    <textarea class="txtArea" id="note" name="note" rows="4" cols="50">{{categoria.note}}</textarea>
+                </div>
+            </div>  
+            <br>
+            <div class="d-flex flex-row-reverse"><button type="submit" class="button"><i class="fa-solid fa-floppy-disk"></i> Salvar</button></div> 
+              
+        </form>
+    </div>
+</div>

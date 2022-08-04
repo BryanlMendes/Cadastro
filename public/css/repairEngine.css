@@ -1,0 +1,121 @@
+.check{
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    margin:0;
+    align-self: center;
+}
+.divCheck{
+    width: 316px;
+    margin-right: auto;
+    margin-left: auto;
+    align-self: center;
+}
+.lineLabel{
+    width: 270px;
+    height: 1px;
+    background: black;
+    margin-top: 25px;
+    
+}
+.txtLine{
+    width: 115px;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-left: 1px;
+    padding: 0px;
+    text-align: center;
+}
+.divArea{
+    width: 600px;
+}
+.txtArea{
+    border-radius: 5px;
+    border: 3px solid;
+    border-color: #134F70;
+    width: 600px;
+    height:300px;
+    resize: none;
+}
+.labelCheck {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default radio button */
+  .labelCheck input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0px;;
+    left: 0px;
+    height: 30px;
+    width: 30px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .labelCheck:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .labelCheck input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .labelCheck input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .labelCheck .checkmark:after {
+       top: 9px;
+      left: 9px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: white;
+  }
+  .btnImage{
+    background-color:#134F70;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 5px;
+    border-color: #134F70;
+    width: 150px;
+    height: 50px;
+    align-self: end;
+  }
+  .divColView{
+    width: 210px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0px;
+}

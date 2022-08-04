@@ -1,0 +1,58 @@
+<h3>Novo Motor:</h3>
+
+<div class="card">
+    <div class="card-body">
+        <form action="/motor/posgatensnova" method="POST" class="forms">
+            <div class="row d-flex justify-content-around">
+                <div class="row col-4">    
+                    <div class="divInput row">
+                        <label class="label" for="marca:">Marca:</label>
+                        <input type="text" name="marca" id="marca" placeholder="WEG" class="input">
+                        <label class="label" for="hp">HP:</label>
+                        <input type="number" name="hp" id="HP" placeholder="5" class="input">
+                        <label class="label" for="comprimento">Comprimento</label>
+                        <input type="text" name="comprimento" id="comprimento" placeholder="94"class="input">
+                        <label class="label" for="diametro">Diametro</label>
+                        <input type="text" name="diametro" id="diametro" placeholder="140" class="input">
+                    </div>
+                </div>
+                <div class="row col-4">
+                    <div class="divInput row">
+                        <label class="label" for="modelo">Modelo:</label>
+                        <input type="text" name="modelo" id="modelo" placeholder="132M" class="input">
+                        <label class="label" for="canais">Canais:</label>
+                        <input type="number" name="canais" id="canais" placeholder="36" class="input"> 
+                        <label class="label" for="passo">Passo:</label>
+                        <input type="text" name="passo" id="passo" placeholder="9" class="input">
+                        <label class="label" for="ligacao">Ligacao:</label>
+                        <input type="text" name="ligacao" id="ligacao" placeholder="Serie" class="input">
+                    </div>
+                </div>
+                <div class="row col-4">
+                    <div class="divInput row">
+                        <label class="label" for="tensao">Tensão:</label>
+                        <input type="text" name="tensao" id="tensao" placeholder="220/380" class="input">
+                        <label class="label" for="espiras">Espiras:</label>
+                        <input type="number" name="espiras" id="espiras" placeholder="15" class="input"> 
+                        <label class="label" for="fios">Fios:</label>
+                        <input type="text" name="fios" id="fios" placeholder="2/18" class="input">
+                        <label class="label" for="peso">Peso:</label>
+                        <input type="text" name="peso" id="peso" placeholder="4.4" class="input">
+                    </div>
+                </div>                              
+            </div><!--div class="row d-flex justify-content-around" -->
+            <br>
+             <div class="row d-flex justify-content-around">
+                <div class="row col-6">
+                    <button type="button" class="button" onclick="window.location.href='/motor/consult';"><i class="fa-solid fa-reply"></i></button>     
+
+                </div>
+                <div class="row col-6">
+                    <div class="d-flex flex-row-reverse"><button type="submit" class="button"><i class="fa-solid fa-floppy-disk"></i> Salvar</button></div>
+                </div>
+            </div>
+            
+  
+        </form>
+    </div>
+</div>

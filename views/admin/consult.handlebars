@@ -1,0 +1,99 @@
+
+{{#each erros}}
+    <div class="alert alert-danger">{{texto}}</div>
+{{else}}
+
+{{/each}}
+<form action="/motor/consult/{{marca}}{{hp}}{{diamentro}}{{canais}}" method="POST" class="forms">
+    <div class="row d-flex justify-content-around">
+        <div class="row col-4"> 
+            <div class="divInput row">
+                <label class="label" for="marca">Marca:</label>
+                <input type="text" name="marca" id="marca" placeholder="Marca" class="inputClient">
+                <label class="label" for="diametro">Diametro:</label>
+                <input type="text"  name="diametro" id="diametro" placeholder="Diametro" class="inputClient">
+            </div>
+        </div>                          
+        <div class="row col-4">
+            <div class="divInput row">
+                <label class="label" for="hp">HP:</label>
+                <input type="text"  name="hp" id="hp" placeholder="HP" class="inputClient">
+                <label class="label" for="canais">Canais:</label>
+                <input type="text"  name="canais" id="canais" placeholder="Canais" class="inputClient">
+            </div>
+        </div>                
+             <div class="row col-4">
+                <div class="divInput row">
+                        <button type="button"class="button" style="width: 200px; margin: auto;" onclick="window.location.href='/motor/postagensadd/';"><i class="fa-solid fa-plus"></i>  Criar novo</button>
+                        <button type="submit" class="button" style="width: 300px; margin: auto;"><i class="fa-solid fa-magnifying-glass"></i> Pesquisar</button>
+                </div>
+             </div>
+        </form>
+<h2>Motores Cadastrados:</h2>
+<hr>
+{{#each tabela}}
+    <div class="card" id="cardHome">
+        <div class="card-body divCard">
+            <div class="row d-flex justify-content-around" style="text-align: center;">
+                <div class="row" style="margin-bottom: 30px;">
+                    <div class="d-flex flex-row-reverse">
+            </div>
+                    <h1>Marca: {{marca}}</h1>
+                    <hr>
+                </div>
+            </div>
+        
+            <div class="row d-flex justify-content-around">
+                <div class="row col">
+                    <div class="divInput row">
+                        <label class="labelHome" for="hp">HP:</label>
+                        <div class="divHome">{{hp}}</div>
+                        <hr>
+                        <label class="labelHome" for="modelo">Modelo:</label>
+                        <div class="divHome">{{modelo}}</div>
+                        <hr>
+                        <label class="labelHome" for="ligacao">Ligação:</label>
+                        <div class="divHome">{{ligacao}}</div>
+                        <hr>
+                        <label class="labelHome" for="fios">Fios:</label>
+                        <div class="divHome">{{fios}}</div>
+                        <hr>
+                       
+                    </div>
+                </div>
+                <div class="row col">
+                    <div class="divInput row">
+                        <label class="labelHome" for="comprimento">Comprimento:</label>
+                        <div class="divHome">{{comprimento}}</div>
+                        <hr>
+                        <label class="labelHome" for="canais">Canais:</label>
+                        <div class="divHome">{{canais}}</div>
+                        <hr>
+                        <label class="labelHome" for="tensao">Tensão:</label>
+                        <div class="divHome">{{tensao}}</div>
+                        <hr>
+                        <label class="labelHome" for="peso">Peso:</label>
+                        <div class="divHome">{{peso}}</div>
+                        <hr>                         
+                    </div>
+                </div>
+                <div class="row col">
+                    <div class="divInput row" style="height:100px ;">
+                        <label class="labelHome" for="diametro">Diametro:</label>
+                        <div class="divHome">{{diametro}}</div>
+                        <hr>
+                        <label class="labelHome" for="passo">Passo:</label>
+                        <div class="divHome">{{passo}}</div>
+                        <hr>
+                        <label class="labelHome" for="espiras">Espiras:</label>
+                        <div class="divHome">{{espiras}}</div>
+                        <hr>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{else}}
+ <h4 style="text-align: center; margin-top:100px ;">Nenhuma Motor encontrado!</h4>
+{{/each}}
