@@ -28,42 +28,27 @@
                 </div>
             </div>
             <div class="row d-flex justify-content-around">
-                <div class="row col-6">    
+                <div class="row col-4">    
                     <div class="divInput row">
                         <label class="label" for="os">OS:</label>
                         <input type="text" name="os" id="os" placeholder="OS" class="input">
                         <label class="label" for="proposal">Proposta:</label>
                         <input type="number" name="proposal" id="proposal" placeholder="Proposta" class="input">
-                    </div>
-                </div>
-                <div class="row col-6">
-                    <div class="divInput row">
                         <label class="label" for="engineBrand">Marca Motor:</label>
                         <input type="text" name="engineBrand" id="engineBrand" placeholder="Marca Moto"class="input">
-                        <label class="label" for="turnedOn">Ligado em:</label>
-                        <input type="text" name="turnedOn" id="turnedOn" placeholder="Ligado em" class="input">
-                    </div>
-                </div>
-                <div class="row col-6">
-                    <div class="divInput row">
                         <label class="label" for="power">Potência:</label>
                         <input type="text" name="power" id="power" placeholder="Potência" class="input">
                         <label class="label" for="rotation">Rotação:</label>
-                        <input type="number" name="rotation" id="rotation" placeholder="Rotação" class="input"> 
+                        <input type="number" name="rotation" id="rotation" placeholder="Rotação" class="input">
                     </div>
-                </div> 
-                <div class="row col-6">
+                </div>
+                <div class="row col-4">
                     <div class="divInput row">
                         <label class="label" for="model">Modelo:</label>
                         <input type="text" name="model" id="model" placeholder="Modelo" class="input">
                         <label class="label" for="boxNumber">NºCaixa:</label>
                         <input type="text" name="boxNumber" id="boxNumber" placeholder="NºCaixa" class="input">
-                    </div>
-                </div>                     
-            </div><!--div class="row d-flex justify-content-around" -->
-            <div class="row d-flex justify-content-around">
-                <div class="row col-6">
-                    <div class="divInput row">
+                        <label class="label" for="boxNumber">Tipo:</label>
                         <select class="input" id="type" name="type">
                             <option selected disabled value="">Tipo:</option>
                             <option value="Motor">Motor</option>
@@ -72,16 +57,14 @@
                             <option value="Explosão">Explosão</option>
                             <option value="Monofásico">Monofásico</option>
                         </select>
+                        <label class="label" for="boxNumber">Caixa de Ligação:</label>
                         <select class="input" id="connectionBox" name="connectionBox">
                             <option selected disabled value="">Caixa de Ligação:</option>
                             <option value="Sem">Sem</option>
                             <option value="Com Tampa">Com Tampa</option>
                             <option value="Sem Tampa">Sem Tampa</option>
                         </select>
-                    </div>
-                </div>
-                <div class="row col-6">
-                    <div class="divInput row">
+                        <label class="label" for="boxNumber">Flange:</label>
                         <select class="input" id="flange" name="flange">
                             <option selected disabled value="">Flange:</option>
                             <option value="Não">Não</option>
@@ -89,31 +72,29 @@
                             <option value="FC">FC</option>
                             <option value="FC Din">FC Din</option>
                         </select>
+                    </div>
+                </div>
+                <div class="row col-4">
+                    <div class="divInput row">
+                        <label class="label" for="boxNumber">Com pés:</label>
                         <select class="input" id="withFeet" name="withFeet">
                             <option selected disabled value="">Com pés:</option>
                             <option value="Sim">Sim</option>
                             <option value="Não">Não</option>
                         </select>
-                        
-
-                    </div> 
-                </div>
-                <div class="row col-6">
-                    <div class="divInput row">
+                        <label class="label" for="boxNumber">Estado Motor:</label>
                         <select class="input" id="engineStatus" name="engineStatus">
                             <option selected disabled value="">Estado Motor:</option>
                             <option value="Montado">Montado</option>
                             <option value="Desmontado">Desmontado</option>
                         </select>
+                        <label class="label" for="boxNumber">Polia:</label>
                         <select class="input" id="pulley" name="pulley">
                             <option selected disabled value="">Polia:</option>
                             <option value="Sim">Sim</option>
                             <option value="Não">Não</option>
                         </select>
-                    </div> 
-                </div>
-                <div class="row col-6">
-                    <div class="divInput row">
+                        <label class="label" for="boxNumber">Tensão:</label>
                         <select class="input" id="voltage" name="voltage">
                             <option selected disabled value="">Tensão:</option>
                             <option value="220/380V">220/380V</option>
@@ -121,16 +102,17 @@
                             <option value="380/660V">380/660V</option>
                             <option value="220/380/440V">220/380/440V</option>
                         </select>
+                        <label class="label" for="boxNumber">Lado Montagem:</label>
                         <select class="input" id="mountingSide" name="mountingSide">
                             <option selected disabled value="">Lado Montagem:</option>
                             <option value="Direito">Direito</option>
                             <option value="Esquerdo">Esquerdo</option>
                             <option value="Cima Dianteira">Cima Dianteira</option>
                             <option value="Cima Traseira">Cima Traseira</option>
-                        </select>
-                    </div> 
-                </div>
-            </div>  
+                        </select>  
+                    </div>
+                </div>                     
+            </div><!--div class="row d-flex justify-content-around" --> 
             <br>
             <div class="d-flex flex-row-reverse"><button type="submit" class="button"><i class="fa-solid fa-floppy-disk"></i> Salvar</button></div>   
         </form>

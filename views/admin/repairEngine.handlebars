@@ -12,78 +12,75 @@
 <div class="card">
     <div class="card-body">
          <form action="/motor/repair" method="POST" class="forms">
-          <input type="hidden" name="id" value="{{categoria._id}}" >
+            <input type="hidden" name="id" value="{{categoria._id}}" >
             <div class="row d-flex justify-content-around">
-                <div class="row col-6">    
+                <div class="row col-12"> 
                     <div class="divInput row">
-                        <label class="label" for="os">OS:</label>
+                        <label class="label" for="client" >OS:</label>
                         <input type="text" name="os" id="os" placeholder="OS" class="input" value="{{categoria.os}}" disabled>
-                        <label class="label" for="packageLength">Comprimento Pacote:</label>
-                        <input type="number" name="packageLength" id="packageLength" placeholder="Comprimento Pacote"class="input" value="{{categoria.packageLength}}">
                     </div>
                 </div>
-                <div class="row col-6">
+            </div>
+            <div class="row d-flex justify-content-around" style="margin-top: 20px;">
+                <div class="row col-4">    
                     <div class="divInput row">
+                        <label class="label" for="packageLength">Comprimento Pacote:</label>
+                        <input type="number" name="packageLength" id="packageLength" placeholder="Comprimento Pacote"class="input" value="{{categoria.packageLength}}">
                         <label class="label" for="packageDiameter">Diâmetro Pacote:</label>
                         <input type="number" name="packageDiameter" id="packageDiameter" placeholder="Diâmetro Pacote" class="input">
                         <label class="label" for="grooves">Ranhuras:</label>
                         <input type="number" name="grooves" id="grooves" placeholder="Ranhuras" class="input">
-                    </div>
-                </div>
-                <div class="row col-6">
-                    <div class="divInput row">
                         <label class="label" for="leadingTip">Ponta Dianteira:</label>
                         <input type="number" name="leadingTip" id="leadingTip" placeholder="Ponta Dianteira" class="input">
                         <label class="label" for="frontBearing">Rolamento Dianteiro:</label>
                         <input type="text" name="frontBearing" id="frontBearing" placeholder="Rolamento Dianteiro" class="input">
+                    </div>
+                </div>
+                <div class="row col-4">
+                    <div class="divInput row">
                         <label class="label" for="frontRetainer">Retentor Dianteiro:</label>
                         <input type="text" name="frontRetainer" id="frontRetainer" placeholder="Retentor Dianteiro" class="input">
-                    </div>
-                </div> 
-                <div class="row col-6">
-                    <div class="divInput row">
                         <label class="label" for="capacitor">Capacitor:</label>
                         <input type="text" name="capacitor" id="capacitor" placeholder="Capacitor" class="input">
                         <label class="label" for="rearBearing">Rolamento Traseiro:</label>
                         <input type="text" name="rearBearing" id="rearBearing" placeholder="Rolamento Traseiro" class="input"> 
                         <label class="label" for="rearRetainer">Retentor Traseiro:</label>
                         <input type="text" name="rearRetainer" id="rearRetainer" placeholder="Retentor Traseiro" class="input">
-                    </div>
-                </div>                     
-            </div><!--div class="row d-flex justify-content-around" -->
-            <div class="row d-flex justify-content-around" style="margin-bottom:20px ;">
-                <div class="row col-6">
-                    <div class="divInput row">
+                        <label class="label" for="rearRetainer">Anel Fix.Rol.Dianteiro:</label>
                         <select class="input" id="frontRing" name="frontRing">
                             <option value="">Anel Fix.Rol.Dianteiro:</option>
                             <option value="2.5">2.5mm</option>
                             <option value="5.0">5.0mm</option>   
                         </select>
+                    </div>
+                </div> 
+                <div class="row col-4">
+                    <div class="divInput row"> 
+                        <label class="label" for="rearRetainer">Tampa Dianteira:</label>
                         <select class="input" id="frontCover" name="frontCover">
                             <option value="">Tampa Dianteira:</option>
                             <option value="Nova">Nova</option>
                             <option value="Serviço">Serviço</option>
                         </select>
+                        <label class="label" for="rearRetainer">Tipo Conserto:</label>
                         <select class="input" id="concertType" name="concertType">
                             <option value="">Tipo Conserto:</option>
                             <option value="Revisão">Revisão</option>
                             <option value="Rebobinar">Rebobinar</option>
                         </select>
-
-                    </div>
-                </div>
-                <div class="row col-6" >
-                    <div class="divInput row">
+                        <label class="label" for="rearRetainer">Anel Fix.Rol.Traseiro:</label>
                         <select class="input" id="backRing" name="backRing">
                             <option value="">Anel Fix.Rol.Traseiro:</option>
                             <option value="2.5">2.5mm</option>
                             <option value="5.0">5.0mm</option>
                         </select>
+                        <label class="label" for="rearRetainer">Tampa Traseira:</label>
                         <select class="input" id="backCover" name="backCover">
                             <option value="">Tampa Traseira:</option>
                             <option value="Nova">Nova</option>
                             <option value="Serviço">Serviço</option>
-                        </select>  
+                        </select> 
+                        <label class="label" for="rearRetainer">Motivo da Queima:</label> 
                         <select class="input" id="burnReason" name="burnReason">
                             <option value="">Motivo da Queima</option>
                             <option value="Sobreaquecimento">Sobreaquecimento</option>
@@ -93,11 +90,10 @@
                             <option value="Curto/Espiras">Curto/Espiras</option>
                             <option value="Umidade">Umidade</option>
                             <option value="Surge Reprovou">Surge Reprovou</option>
-                        </select>                 
-                    </div> 
+                        </select>          
+                    </div>
                 </div>
-            </div>
-                <div class="row d-flex justify-content-around">
+                <div class="row d-flex justify-content-around" style="margin-top: 20px;">
                     <div class="row col-6">
                         <div class="divCheck">                         
                             <label class="labelCheck" for="polypropyleneFan">Ventilador Polipropileno
@@ -240,6 +236,7 @@
                 <div class="row d-flex justify-content-around">
                 <div class="row col-6">
                     <div class="divInput row">
+                        <label class="label" for="packageLength">Terceiro 1º:</label>
                         <select class="input" id="third1" name="third1">
                             <option value="">Terceiro:</option>
                             <option value="Sergio">Sergio</option>
@@ -253,6 +250,7 @@
             <div class="row d-flex justify-content-around">
                 <div class="row col-6">
                     <div class="divInput row">
+                        <label class="label" for="packageLength">Tampa Dianteira 1º:</label>
                         <select class="input" id="serviceFrontCover1" name="serviceFrontCover1">
                             <option value="">Tampa Dianteira:</option>
                             <option value="Embuchar">Embuchar</option>
@@ -260,6 +258,7 @@
                             <option value="Ambos">Ambos</option>
                             <option value="Orçamento">Orçamento</option>
                         </select>
+                        <label class="label" for="packageLength">Ponta Dianteira 1º:</label>
                         <select class="input" id="serviceLeadingTip1" name="serviceLeadingTip1">
                             <option value="">Ponta Dianteira:</option>
                             <option value="Tornear">Tornear</option>
@@ -271,6 +270,7 @@
                 </div>
                 <div class="row col-6">
                     <div class="divInput row">
+                        <label class="label" for="packageLength">Tampa Traseira 1º:</label>
                         <select class="input" id="serviceBackCover1" name="serviceBackCover1">
                             <option value="">Tampa Traseira:</option>
                             <option value="Embuchar">Embuchar</option>
@@ -278,6 +278,7 @@
                             <option value="Ambos">Ambos</option>
                             <option value="Orçamento">Orçamento</option>
                         </select>
+                        <label class="label" for="packageLength">Solda Aluminio 1º:</label>
                         <select class="input" id="serviceAluminumSolder1" name="serviceAluminumSolder1">
                             <option value="">Solda Aluminio:</option>
                             <option value="Tampa">Tampa</option>
@@ -292,6 +293,7 @@
                 <div class="row d-flex justify-content-around">
                 <div class="row col-6">
                     <div class="divInput row">
+                        <label class="label" for="packageLength">Terceiro 2º:</label>
                         <select class="input" id="third2" name="third2">
                             <option value="">Terceiro:</option>
                             <option value="Sergio">Sergio</option>
@@ -305,6 +307,7 @@
             <div class="row d-flex justify-content-around">
                 <div class="row col-6">
                     <div class="divInput row">
+                        <label class="label" for="packageLength">Tampa Dianteira 2º:</label>
                         <select class="input" id="serviceFrontCover2" name="serviceFrontCover2">
                             <option value="">Tampa Dianteira:</option>
                             <option value="Embuchar">Embuchar</option>
@@ -312,6 +315,7 @@
                             <option value="Ambos">Ambos</option>
                             <option value="Orçamento">Orçamento</option>
                         </select>
+                        <label class="label" for="packageLength">Ponta Dianteira 2º:</label>
                         <select class="input" id="serviceLeadingTip2" name="serviceLeadingTip2">
                             <option value="">Ponta Dianteira:</option>
                             <option value="Tornear">Tornear</option>
@@ -323,6 +327,7 @@
                 </div>
                 <div class="row col-6">
                     <div class="divInput row">
+                        <label class="label" for="packageLength">Tampa Traseira 2º:</label>
                         <select class="input" id="serviceBackCover2" name="serviceBackCover2">
                             <option value="">Tampa Traseira:</option>
                             <option value="Embuchar">Embuchar</option>
@@ -330,6 +335,7 @@
                             <option value="Ambos">Ambos</option>
                             <option value="Orçamento">Orçamento</option>
                         </select>
+                        <label class="label" for="packageLength">Solda Aluminio 2º:</label>
                         <select class="input" id="serviceAluminumSolder2" name="serviceAluminumSolder2">
                             <option value="">Solda Aluminio:</option>
                             <option value="Tampa">Tampa</option>

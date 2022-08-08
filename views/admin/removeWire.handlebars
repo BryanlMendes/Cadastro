@@ -3,39 +3,45 @@
 {{else}}
 
 {{/each}}
-<script>
-    window.onload = function () {
-        const data = new Date().toLocaleString("pt-br");
-        document.getElementById('date').innerHTML = data;
-        document.getElementById('data').value = data;
-        console.log(data)
-    }
-</script>
 
 <h3>Remover Fios:</h3>
 
 <div class="card">
     <div class="card-body">
-        <form action="/motor/nova" method="POST" class="forms">
-            <div class="row d-flex justify-content-around">
-                <div class="row col-6">    
+        <form action="/motor/removeWire/add" method="POST" class="forms">
+        <input type="hidden" name="id" value="{{categoria._id}}" >
+        <div class="row d-flex justify-content-around">
+                <div class="row col-12"> 
                     <div class="divInput row">
-                        <label class="label" for="os">Nº Espiras:</label>
-                        <input type="text" name="os" id="os" placeholder="Nº Espiras" class="input">
+                        <label class="label" for="client" >OS:</label>
+                        <input type="text" name="os" id="os" placeholder="OS" class="input" value="{{categoria.os}}" disabled>
                     </div>
                 </div>
-                <div class="row col-6">
+            </div>
+            <div class="row d-flex justify-content-around" style="margin-top:20px ;">
+                <div class="row col-4">    
                     <div class="divInput row">
-                        <label class="label" for="os">Tipo Ligação:</label>
-                        <select class="input" id="voltage" name="voltage">
-                            <option selected disabled value="">Tipo Ligação:</option>
-                            <option value="220/380V">220/380V</option>
-                            <option value="380V">380V</option>
-                            <option value="380/660V">380/660V</option>
-                            <option value="220/380/440V">220/380/440V</option>
-                        </select>
+                        <label class="label" for="spirals">Nº Espiras:</label>
+                        <input type="text" name="spirals" id="spirals" placeholder="Nº Espiras" class="input">
+                        <label class="label" for="wire">Fio:</label>
+                        <input type="text" name="wire" id="wire" placeholder="Fio" class="input">
                     </div>
                 </div>
+                <div class="row col-4">
+                    <div class="divInput row">
+                        <label class="label" for="connectionType">Tipo Ligação:</label>
+                        <input type="text" name="connectionType" id="connectionType" placeholder="Tipo Ligação" class="input">
+                        <label class="label" for="weight">Peso:</label>
+                        <input type="text" name="weight" id="weight" placeholder="Peso" class="input">
+                    </div>
+                </div>
+                <div class="row col-4">
+                    <div class="divInput row" style="height:94px ;">
+                        <label class="label" for="pace">Passo:</label>
+                        <input type="text" name="pace" id="pace" placeholder="Passo" class="input">
+                    </div>
+                </div>
+            </div>
                
             <br>
             <div class="d-flex flex-row-reverse"><button type="submit" class="button"><i class="fa-solid fa-floppy-disk"></i> Salvar</button></div>   

@@ -1,0 +1,106 @@
+{{#each erros}}
+    <div class="alert alert-danger">{{texto}}</div>
+{{else}}
+
+{{/each}}
+<form action="/motor/removeWire/{{os}}{{client}}" method="POST" class="forms">
+            <div class="d-flex" style="justify-content:space-around ;"> 
+                    <div class="divInput row">
+                        <label class="label" for="client">OS:</label>
+                        <input type="text" name="os" id="os" placeholder="OS" class="inputClient">
+                    </div>
+                    <div class="divInput row">
+                        <label class="label" for="client">Cliente:</label>
+                        <input type="text"  name="client" id="client" placeholder="Cliente" class="inputClient" oninput="this.value = this.value.toUpperCase()">
+                    </div>
+                    <div class="divInput row">
+                        <button type="submit" class="button" style="width: 300px; margin-bottom: 10px;"><i class="fa-solid fa-magnifying-glass"></i> Pesquisar</button>
+                    </div>
+            </div>
+                 
+        </form>
+<h2>Ordem de Serviço:</h2>
+<hr>
+{{#each home}}
+    <div class="card" id="cardHome">
+        <div class="card-body divCard">
+            <div class="row d-flex justify-content-around" style="text-align: center;">
+                <div class="row" style="margin-bottom: 30px;">
+                    <h1>Data:{{data}}</h1>
+                    <hr>
+                    <div class="divHeader">OS:{{os}}</div>
+                    <div class="divHeader">Cliente: {{client}}</div>
+                </div>
+            </div>      
+            <div class="row d-flex justify-content-around">
+                <div class="row col">
+                    <div class="divInput row">
+                        <label class="labelHome" for="proposal">Proposta:</label>
+                        <div class="divHome">{{proposal}}</div>
+                        <hr>
+                        <label class="labelHome" for="engineBrand">Marca:</label>
+                        <div class="divHome">{{engineBrand}}</div>
+                        <hr>
+                        <label class="labelHome" for="turnedOn">Ligado em:</label>
+                        <div class="divHome">{{turnedOn}}</div>
+                        <hr>
+                        <label class="labelHome" for="power">Potência:</label>
+                        <div class="divHome">{{power}}</div>
+                        <hr>
+                        <label class="labelHome" for="rotation">Rotação:</label>
+                        <div class="divHome">{{rotation}}</div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row col">
+                    <div class="divInput row">
+                        <label class="labelHome" for="model">Modelo:</label>
+                        <div class="divHome">{{model}}</div>
+                        <hr>
+                        <label class="labelHome" for="boxNumber">Nº caixa:</label>
+                        <div class="divHome">{{boxNumber}}</div>
+                        <hr>
+                        <label class="labelHome" for="type">Tipo:</label>
+                        <div class="divHome">{{type}}</div>
+                        <hr>
+                        <label class="labelHome" for="connectionBox">Caixa conexão:</label>
+                        <div class="divHome">{{connectionBox}}</div>
+                        <hr>
+                        <label class="labelHome" for="flange">Flange:</label>
+                        <div class="divHome">{{flange}}</div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row col">
+                    <div class="divInput row">
+                        <label class="labelHome" for="withFeet">Com pés:</label>
+                        <div class="divHome">{{withFeet}}</div>
+                        <hr>
+                        <label class="labelHome" for="engineStatus">Estado motor:</label>
+                        <div class="divHome">{{engineStatus}}</div>
+                        <hr>
+                        <label class="labelHome" for="pulley">Polia:</label>
+                        <div class="divHome">{{pulley}}</div>
+                        <hr>
+                        <label class="labelHome" for="voltage">Tensão:</label>
+                        <div class="divHome">{{voltage}}</div>
+                        <hr>
+                        <label class="labelHome" for="mountingSide">Lado montagem:</label>
+                        <div class="divHome">{{mountingSide}}</div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="d-flex" style="justify-content:space-around ;">  
+                    <a href="/motor/edit/{{_id}}"><button type="button" class="button"><i class="fa-solid fa-pen-to-square"></i> Editar</button></a>
+                    
+                    <a href="/motor/removeWire/add/{{_id}}"><button type="button" class="btnImage">Próximo <i class="fa-solid fa-arrow-right"></i></button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{{else}}
+ <div class="row d-flex justify-content-around">
+    <h4 style="text-align: center; margin-top:100px ;">Nenhuma Ordem de Serviço encontrada!</h4>
+ </div>
+{{/each}}

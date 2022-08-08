@@ -45,6 +45,43 @@ router.get("/motor/search/", (req,res) =>{
     })
 
 })
+router.post("/motor/removeWire", (req,res) =>{
+
+    var erros = []
+    if((!req.body.client || typeof req.body.client == undefined || req.body.client == null) && (!req.body.os || typeof req.body.os == undefined || req.body.os == null)){
+        erros.push({texto:"Preencha o campo 'Cliente' ou 'OS'!"})
+    }
+    if(req.body.client && req.body.os){
+        erros.push({texto:"Preencha somente um dos campos!"})
+    }
+    if(erros.length > 0){
+        res.render("admin/addRemoveWire",{erros: erros})
+    }else{
+        if(!req.body.client || typeof req.body.client == undefined || req.body.client == null){
+            Categoria.find({os:{$regex:req.body.os}}).then((categorias) => {
+                res.render("admin/addRemoveWire", {home: categorias})
+            }).catch((err) => {
+                req.flash("error_msg","Houve um erro ao lista as OS!")
+                res.redirect("/")
+            })
+        }
+        if(!req.body.os || typeof req.body.os == undefined || req.body.os == null){
+            Categoria.find({client:{$regex:req.body.client}}).then((categorias) => {
+                res.render("admin/addRemoveWire", {home: categorias})
+            }).catch((err) => {
+                req.flash("error_msg","Houve um erro ao lista as OS!")
+                res.redirect("/")
+            })
+        }
+    }
+})
+
+router.get("/motor/removeWire/", (req,res) =>{
+    res.render("admin/addRemoveWire",{
+        style:'repairEngine.css'
+    })
+
+})
 
 router.get("/", (req,res) => {
     Categoria.find().sort({_id:-1}).then((categorias) => {
@@ -106,14 +143,22 @@ router.post("/motor/consult", (req,res) => {
                 res.redirect("/")
             })
         } 
-        if(req.body.diametro!='' && req.body.canais!='' && req.body.hp!=''){
+        if(req.body.diametro!='' && req.body.canais!='' && req.body.hp!='' && req.body.marca==''){
             Categoria2.find({diametro:req.body.diametro,canais:req.body.canais,hp:req.body.hp}).then((ficha) => {
                 res.render("admin/consult", {tabela: ficha})        
             }).catch((err) => {
                 req.flash("error_msg","Houve um erro ao listar os Motores!")
                 res.redirect("/")
             })
-        }           
+        } 
+        if(req.body.diametro!='' && req.body.canais!='' && req.body.hp!='' && req.body.marca!=''){
+            Categoria2.find({diametro:req.body.diametro,canais:req.body.canais,hp:req.body.hp,marca:req.body.marca}).then((ficha) => {
+                res.render("admin/consult", {tabela: ficha})        
+            }).catch((err) => {
+                req.flash("error_msg","Houve um erro ao listar os Motores!")
+                res.redirect("/")
+            })
+        }          
     }
 })
 router.get("/motor/consult", (req,res) =>{
@@ -131,24 +176,25 @@ router.get("/motor/postagensadd", (req,res) => {
 })
 router.post("/motor/posgatensnova", (req,res) => {
     const novaPostagem = {
-    Marca: req.body.Marca,
-    HP: req.body.HP,
-    Comprimento: req.body.Comprimento,
-    Diametro: req.body.Diametro,
-    Modelo:  req.body.Modelo,
-    Canais:  req.body.Canais,
-    Passo:  req.body.Passo,
-    Ligacao: req.body.Ligacao,
-    Tensao: req.body.Tensao,
-    Espiras: req.body.Espiras,
-    Fios: req.body.Fios,
-    Peso: req.body.Peso,
+    marca: req.body.marca,
+    hp: req.body.hp,
+    comprimento: req.body.comprimento,
+    diametro: req.body.diametro,
+    modelo:  req.body.modelo,
+    canais:  req.body.canais,
+    passo:  req.body.passo,
+    ligacao: req.body.ligacao,
+    tensao: req.body.tensao,
+    espiras: req.body.espiras,
+    fios: req.body.fios,
+    peso: req.body.peso,
     }
-    new Categoria(novaPostagem).save().then(() => {
-        res.redirect("/")
-
+    new Categoria2(novaPostagem).save().then(() => {
+        req.flash("success_msg", "Motor cadastrado com sucesso!")
+        res.redirect("/motor/consult")
     }).catch((err) => {
-
+        req.flash("error_msg","Erro ao salvar!")
+        res.redirect("/")
     })
 })
 router.get("/motor/view/:id", (req, res) =>{
@@ -166,6 +212,11 @@ router.get('/motor/add', (req,res) => {
     })
 })
 router.get('/motor/removeWire', (req,res) => {
+    res.render("admin/addRemoveWire",{
+        style:'addEngine.css'
+    })
+})
+router.get('/motor/removeWire/add', (req,res) => {
     res.render("admin/removeWire",{
         style:'addEngine.css'
     })
@@ -266,6 +317,11 @@ router.post("/motor/nova", (req, res) => {
             note:req.body.note,
             collaborated:req.body.collaborated,
             dateCollaborated:req.body.dateCollaborated,
+            spirals:req.body.spirals,
+            wire:req.body.wire,
+            connectionType:req.body.connectionType,
+            weight:req.body.weight,
+            pace:req.body.pace,
             date: req.body.date,
         }
         new Categoria(novaCategoria).save().then(() => {
@@ -292,6 +348,15 @@ router.get("/motor/edit/:id", (req, res) =>{
 router.get("/motor/reparo/:id", (req, res) =>{
     Categoria.findOne({_id:req.params.id}).then((categoria) => {
         res.render("admin/repairEngine", {categoria:categoria})
+    }).catch((err) => {
+        req.flash("error_msg", "Essa categoria não existe")
+        res.redirect("/")
+    }) 
+    
+})
+router.get("/motor/removeWire/add/:id", (req, res) =>{
+    Categoria.findOne({_id:req.params.id}).then((categoria) => {
+        res.render("admin/removeWire", {categoria:categoria})
     }).catch((err) => {
         req.flash("error_msg", "Essa categoria não existe")
         res.redirect("/")
@@ -401,6 +466,26 @@ router.post("/motor/repair", (req,res) =>{
         categoria.note= req.body.note
         categoria.collaborated= req.body.collaborated
         categoria.dateCollaborated= req.body.dateCollaborated
+        categoria.save().then(() =>
+        {
+            req.flash("success_msg", "Ficha editada com sucesso!")
+            res.redirect("/")
+        }).catch((err) =>{
+        req.flash("error_msg","Erro ao editar!")
+            res.redirect("/")
+    })
+    }).catch((err) =>{
+        req.flash("error_msg","Erro ao editar!")
+            res.redirect("/")
+    })
+})
+router.post("/motor/removeWire/add", (req,res) =>{  
+    Categoria.findOne({_id: req.body.id}).then((categoria) =>{
+        categoria.spirals=req.body.spirals
+        categoria.wire=req.body.wire
+        categoria.connectionType=req.body.connectionType
+        categoria.weight=req.body.weight
+        categoria.pace=req.body.pace
         categoria.save().then(() =>
         {
             req.flash("success_msg", "Ficha editada com sucesso!")

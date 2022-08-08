@@ -310,6 +310,26 @@ const Categoria = new Schema({
         type: String,
         required: false
     },
+    spirals: {
+        type: String,
+        required: false
+    },
+    wire: {
+        type: String,
+        required: false
+    },
+    connectionType: {
+        type: String,
+        required: false
+    },
+    weight: {
+        type: String,
+        required: false
+    },
+    pace: {
+        type: String,
+        required: false
+    },
     date: {
         type: Date,
         default: Date.now()
