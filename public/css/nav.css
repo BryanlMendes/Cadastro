@@ -22,3 +22,6 @@ nav{
     margin-left: 5px;
     color: white;
   }
+  #navbarSupportedContent{
+    width: 300px;
+  }

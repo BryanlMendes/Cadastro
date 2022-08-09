@@ -316,7 +316,7 @@ router.post("/motor/nova", (req, res) => {
             serialNumber:req.body.serialNumber,
             note:req.body.note,
             collaborated:req.body.collaborated,
-            dateCollaborated:req.body.dateCollaborated,
+            dataCollaborated:req.body.dataCollaborated,
             spirals:req.body.spirals,
             wire:req.body.wire,
             connectionType:req.body.connectionType,
@@ -405,7 +405,7 @@ router.post("/motor/edit", (req,res) =>{
             res.redirect("/")
     })
 })
-router.post("/motor/repair", (req,res) =>{
+router.post("/motor/allEdit", (req,res) =>{
     
     Categoria.findOne({_id: req.body.id}).then((categoria) =>{
         categoria.packageLength= req.body.packageLength
@@ -465,7 +465,7 @@ router.post("/motor/repair", (req,res) =>{
         categoria.serialNumber= req.body.serialNumber
         categoria.note= req.body.note
         categoria.collaborated= req.body.collaborated
-        categoria.dateCollaborated= req.body.dateCollaborated
+        categoria.dataCollaborated= req.body.dataCollaborated
         categoria.save().then(() =>
         {
             req.flash("success_msg", "Ficha editada com sucesso!")
@@ -499,7 +499,7 @@ router.post("/motor/removeWire/add", (req,res) =>{
             res.redirect("/")
     })
 })
-router.post("/motor/allEdit", (req,res) =>{
+router.post("/motor/edit", (req,res) =>{
     Categoria.findOne({_id: req.body.id}).then((categoria) =>{
         categoria.client= req.body.client
         categoria.os= req.body.os

@@ -6,6 +6,9 @@ const Categoria = new Schema({
     data: {
         type:String,
     },
+    dataCollaborated: {
+        type:String,
+    },
     client: {
         type:String,
         required:true,
@@ -303,10 +306,6 @@ const Categoria = new Schema({
         required: false
     },
     collaborated: {
-        type: String,
-        required: false
-    },
-    dateCollaborated: {
         type: String,
         required: false
     },

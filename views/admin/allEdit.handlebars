@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-body">
-        <form action="/motor/edit" method="POST" class="forms">
+        <form action="/motor/allEdit" method="POST" class="forms">
         <input type="hidden" name="id" value="{{categoria._id}}" >
             <div class="row d-flex justify-content-around">
                 <label class="divData">Data:{{categoria.data}}</label>
@@ -212,6 +212,16 @@
                     <label class="label" for="note">Observações:</label>
                     <textarea class="txtArea" id="note" name="note" rows="4" cols="50">{{categoria.note}}</textarea>
                 </div>
+            </div>
+            <div class="d-flex" style="justify-content:space-around; margin-top:20px; "> 
+                    <div class="divInput row">
+                        <label class="label" for="collaborated">Colaborador:</label>
+                        <input type="text" name="collaborated" id="collaborated" placeholder="Data" class="inputClient" value="{{categoria.collaborated}}" disabled>
+                    </div>
+                    <div class="divInput row">
+                        <label class="label" for="Data">Data:</label>
+                        <input type="text" name="dataCollaborated" id="dataCollaborated" placeholder="Data" class="inputClient" value="{{categoria.dataCollaborated}}" disabled>
+                    </div>
             </div>  
             <br>
             <div class="d-flex flex-row-reverse"><button type="submit" class="button"><i class="fa-solid fa-floppy-disk"></i> Salvar</button></div> 
