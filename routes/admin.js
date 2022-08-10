@@ -8,8 +8,58 @@ const router = express.Router()
 
 
 
-router.post("/motor/search", (req,res) =>{
+// Inicio Rotas
+router.get("/", (req,res) => {
+    Categoria.find().sort({_id:-1}).then((categorias) => {
+        res.render("admin/home", {lista: categorias})
+    }).catch((err) => {
+        req.flash("error_msg","Houve um erro ao lista as OS!")
+        res.redirect("/")
+    })
+})
 
+router.get("/motor/postagens", (req, res) =>{
+    res.render("admin/postagens")
+})
+router.get("/motor/postagensadd", (req,res) => {
+    res.render("admin/addpostagem")
+})
+
+router.get("/motor/view/:id", (req, res) =>{
+    Categoria.find({_id:req.params.id}).then((categoria) => {
+        res.render("admin/view", {view:categoria})
+    }).catch((err) => {
+        req.flash("error_msg", "Essa categoria não existe")
+        res.redirect("/")
+    }) 
+    
+})
+router.get('/motor/add', (req,res) => {
+    res.render("admin/addEngine",{
+        style:'addEngine.css'
+    })
+})
+router.get('/motor/removeWire', (req,res) => {
+    res.render("admin/addRemoveWire",{
+        style:'addEngine.css'
+    })
+})
+router.get('/motor/removeWire/add', (req,res) => {
+    res.render("admin/removeWire",{
+        style:'addEngine.css'
+    })
+})
+router.get("/motor/repair", (req,res) => {
+    res.render("admin/repairEngine",{
+        style:'repairEngine.css'
+    })
+})
+// Fim Rotas
+
+
+
+// Inicio filtro Search
+router.post("/motor/search", (req,res) =>{
     var erros = []
     if((!req.body.client || typeof req.body.client == undefined || req.body.client == null) && (!req.body.os || typeof req.body.os == undefined || req.body.os == null)){
         erros.push({texto:"Preencha o campo 'Cliente' ou 'OS'!"})
@@ -45,8 +95,12 @@ router.get("/motor/search/", (req,res) =>{
     })
 
 })
-router.post("/motor/removeWire", (req,res) =>{
+// Fim filtro Search
 
+
+
+// Inicio filtro Remover fio
+router.post("/motor/removeWire", (req,res) =>{
     var erros = []
     if((!req.body.client || typeof req.body.client == undefined || req.body.client == null) && (!req.body.os || typeof req.body.os == undefined || req.body.os == null)){
         erros.push({texto:"Preencha o campo 'Cliente' ou 'OS'!"})
@@ -82,17 +136,12 @@ router.get("/motor/removeWire/", (req,res) =>{
     })
 
 })
+// Fim filtro Remover fio
 
-router.get("/", (req,res) => {
-    Categoria.find().sort({_id:-1}).then((categorias) => {
-        res.render("admin/home", {lista: categorias})
-    }).catch((err) => {
-        req.flash("error_msg","Houve um erro ao lista as OS!")
-        res.redirect("/")
-    })
-}) //aqui
-router.post("/motor/consult", (req,res) => {
-    
+
+
+// Inicio filtro Consulta
+router.post("/motor/consult", (req,res) => { 
     var erros = []
     if((!req.body.hp || typeof req.body.hp == undefined || req.body.hp == null) && (!req.body.marca || typeof req.body.marca == undefined || req.body.marca == null)&& (!req.body.diametro || typeof req.body.diametro == undefined || req.body.diametro == null)&& (!req.body.canais || typeof req.body.canais == undefined || req.body.canais == null)){
         erros.push({texto:"Preencha os campos!"})
@@ -167,70 +216,13 @@ router.get("/motor/consult", (req,res) =>{
     })
 
 })
+// Fim filtro Consulta
 
-router.get("/motor/postagens", (req, res) =>{
-    res.render("admin/postagens")
-})
-router.get("/motor/postagensadd", (req,res) => {
-    res.render("admin/addpostagem")
-})
-router.post("/motor/posgatensnova", (req,res) => {
-    const novaPostagem = {
-    marca: req.body.marca,
-    hp: req.body.hp,
-    comprimento: req.body.comprimento,
-    diametro: req.body.diametro,
-    modelo:  req.body.modelo,
-    canais:  req.body.canais,
-    passo:  req.body.passo,
-    ligacao: req.body.ligacao,
-    tensao: req.body.tensao,
-    espiras: req.body.espiras,
-    fios: req.body.fios,
-    peso: req.body.peso,
-    }
-    new Categoria2(novaPostagem).save().then(() => {
-        req.flash("success_msg", "Motor cadastrado com sucesso!")
-        res.redirect("/motor/consult")
-    }).catch((err) => {
-        req.flash("error_msg","Erro ao salvar!")
-        res.redirect("/")
-    })
-})
-router.get("/motor/view/:id", (req, res) =>{
-    Categoria.find({_id:req.params.id}).then((categoria) => {
-        res.render("admin/view", {view:categoria})
-    }).catch((err) => {
-        req.flash("error_msg", "Essa categoria não existe")
-        res.redirect("/")
-    }) 
-    
-})
-router.get('/motor/add', (req,res) => {
-    res.render("admin/addEngine",{
-        style:'addEngine.css'
-    })
-})
-router.get('/motor/removeWire', (req,res) => {
-    res.render("admin/addRemoveWire",{
-        style:'addEngine.css'
-    })
-})
-router.get('/motor/removeWire/add', (req,res) => {
-    res.render("admin/removeWire",{
-        style:'addEngine.css'
-    })
-})
-router.get("/motor/repair", (req,res) => {
-    res.render("admin/repairEngine",{
-        style:'repairEngine.css'
-    })
-})
 
+
+// Inicio Cadastro Cliente
 router.post("/motor/nova", (req, res) => {
-
     var erros = []
-
     if(!req.body.client || typeof req.body.client == undefined || req.body.client == null){
         erros.push({texto:"Nome do Cliente Obrigatório!"})
     }
@@ -335,7 +327,39 @@ router.post("/motor/nova", (req, res) => {
     }
 
 })
+// FimCadastro Cliente
 
+
+
+// Inicio Cadastro Motor
+router.post("/motor/posgatensnova", (req,res) => {
+    const novaPostagem = {
+    marca: req.body.marca,
+    hp: req.body.hp,
+    comprimento: req.body.comprimento,
+    diametro: req.body.diametro,
+    modelo:  req.body.modelo,
+    canais:  req.body.canais,
+    passo:  req.body.passo,
+    ligacao: req.body.ligacao,
+    tensao: req.body.tensao,
+    espiras: req.body.espiras,
+    fios: req.body.fios,
+    peso: req.body.peso,
+    }
+    new Categoria2(novaPostagem).save().then(() => {
+        req.flash("success_msg", "Motor cadastrado com sucesso!")
+        res.redirect("/motor/consult")
+    }).catch((err) => {
+        req.flash("error_msg","Erro ao salvar!")
+        res.redirect("/")
+    })
+})
+// Fim Cadastro Motor
+
+
+
+// Inicio Editar Cadastro Cliente
 router.get("/motor/edit/:id", (req, res) =>{
     Categoria.findOne({_id:req.params.id}).then((categoria) => {
         res.render("admin/editEngine", {categoria:categoria})
@@ -345,34 +369,6 @@ router.get("/motor/edit/:id", (req, res) =>{
     }) 
     
 })
-router.get("/motor/reparo/:id", (req, res) =>{
-    Categoria.findOne({_id:req.params.id}).then((categoria) => {
-        res.render("admin/repairEngine", {categoria:categoria})
-    }).catch((err) => {
-        req.flash("error_msg", "Essa categoria não existe")
-        res.redirect("/")
-    }) 
-    
-})
-router.get("/motor/removeWire/add/:id", (req, res) =>{
-    Categoria.findOne({_id:req.params.id}).then((categoria) => {
-        res.render("admin/removeWire", {categoria:categoria})
-    }).catch((err) => {
-        req.flash("error_msg", "Essa categoria não existe")
-        res.redirect("/")
-    }) 
-    
-})
-router.get("/motor/allEdit/:id", (req, res) =>{
-    Categoria.findOne({_id:req.params.id}).then((categoria) => {
-        res.render("admin/allEdit", {categoria:categoria})
-    }).catch((err) => {
-        req.flash("error_msg", "Essa categoria não existe")
-        res.redirect("/")
-    }) 
-    
-})
-
 router.post("/motor/edit", (req,res) =>{
     Categoria.findOne({_id: req.body.id}).then((categoria) =>{
         categoria.client= req.body.client
@@ -405,7 +401,21 @@ router.post("/motor/edit", (req,res) =>{
             res.redirect("/")
     })
 })
-router.post("/motor/allEdit", (req,res) =>{
+// Fim Editar Cadastro Cliente
+
+
+
+// Inicio Editar Reparo
+router.get("/motor/reparo/:id", (req, res) =>{
+    Categoria.findOne({_id:req.params.id}).then((categoria) => {
+        res.render("admin/repairEngine", {categoria:categoria})
+    }).catch((err) => {
+        req.flash("error_msg", "Essa categoria não existe")
+        res.redirect("/")
+    }) 
+    
+})
+router.post("/motor/repair", (req,res) =>{
     
     Categoria.findOne({_id: req.body.id}).then((categoria) =>{
         categoria.packageLength= req.body.packageLength
@@ -479,6 +489,125 @@ router.post("/motor/allEdit", (req,res) =>{
             res.redirect("/")
     })
 })
+//Fim Editar Reparo
+
+
+
+// Inicio Editar Cadastro Todo
+router.get("/motor/allEdit/:id", (req, res) =>{
+    Categoria.findOne({_id:req.params.id}).then((categoria) => {
+        res.render("admin/allEdit", {categoria:categoria})
+    }).catch((err) => {
+        req.flash("error_msg", "Essa categoria não existe")
+        res.redirect("/")
+    }) 
+    
+})
+router.post("/motor/allEdit", (req,res) =>{
+    
+    Categoria.findOne({_id: req.body.id}).then((categoria) =>{
+        categoria.client= req.body.client
+        categoria.os= req.body.os
+        categoria.proposal= req.body.proposal
+        categoria.engineBrand= req.body.engineBrand
+        categoria.turnedOn= req.body.turnedOn
+        categoria.power= req.body.power
+        categoria.rotation= req.body.rotation
+        categoria.model= req.body.model
+        categoria.boxNumber= req.body.boxNumber
+        categoria.type= req.body.type
+        categoria.connectionBox= req.body.connectionBox
+        categoria.flange= req.body.flange
+        categoria.withFeet= req.body.withFeet
+        categoria.engineStatus= req.body.engineStatus
+        categoria.pulley= req.body.pulley
+        categoria.voltage= req.body.voltage
+        categoria.mountingSide= req.body.mountingSide
+        categoria.packageLength= req.body.packageLength
+        categoria.packageDiameter= req.body.packageDiameter
+        categoria.grooves= req.body.grooves
+        categoria.leadingTip= req.body.leadingTip
+        categoria.rearBearing= req.body.rearBearing
+        categoria.rearRetainer= req.body.rearRetainer
+        categoria.frontBearing= req.body.frontBearing
+        categoria.frontRetainer= req.body.frontRetainer
+        categoria.capacitor= req.body.capacitor
+        categoria.concertType= req.body.concertType
+        categoria.frontRing= req.body.frontRing
+        categoria.frontCover= req.body.frontCover
+        categoria.burnReason= req.body.burnReason
+        categoria.backRing= req.body.backRing
+        categoria.backCover= req.body.backCover
+        categoria.polypropyleneFan= req.body.polypropyleneFan
+        categoria.aluminumFan= req.body.aluminumFan
+        categoria.connectionBoxCheck= req.body.connectionBoxCheck
+        categoria.deflector= req.body.deflector
+        categoria.terminalBoard= req.body.terminalBoard
+        categoria.pasta= req.body.pasta
+        categoria.replaceFrontBearing= req.body.replaceFrontBearing 
+        categoria.replaceRearBearing= req.body.replaceRearBearing
+        categoria.fitsKey= req.body.fitsKey
+        categoria.keyElectronics= req.body.keyElectronics
+        categoria.brakeElectromagnet= req.body.brakeElectromagnet
+        categoria.bridgeRectifier= req.body.bridgeRectifier
+        categoria.hollowCarcass= req.body.hollowCarcass
+        categoria.rewindElectromagnet= req.body.rewindElectromagnet
+        categoria.armor= req.body.armor
+        categoria.nightclubCanvas= req.body.nightclubCanvas
+        categoria.disc= req.body.disc
+        categoria.brakePad= req.body.brakePad
+        categoria.spring= req.body.spring
+        categoria.centrifugal= req.body.centrifugal
+        categoria.platinum= req.body.platinum
+        categoria.capacitorCover= req.body.capacitorCover
+        categoria.makeCover= req.body.makeCover
+        categoria.strap= req.body.strap
+        categoria.eyelet= req.body.eyelet
+        categoria.nameplate= req.body.nameplate
+        categoria.adpConnectionBox= req.body.adpConnectionBox
+        categoria.adpFan= req.body.adpFan
+        categoria.adpDeflector= req.body.adpDeflector
+        categoria.third1= req.body.third1
+        categoria.serviceFrontCover1= req.body.serviceFrontCover1
+        categoria.serviceLeadingTip1= req.body.serviceLeadingTip1
+        categoria.serviceBackCover1= req.body.serviceBackCover1
+        categoria.serviceAluminumSolder1= req.body.serviceAluminumSolder1
+        categoria.third2= req.body.third2
+        categoria.serviceFrontCover2= req.body.serviceFrontCover2
+        categoria.serviceLeadingTip2= req.body.serviceLeadingTip2
+        categoria.serviceBackCover2= req.body.serviceBackCover2
+        categoria.serviceAluminumSolder2= req.body.serviceAluminumSolder2
+        categoria.serialNumber= req.body.serialNumber
+        categoria.note= req.body.note
+        categoria.collaborated= req.body.collaborated
+        categoria.dataCollaborated= req.body.dataCollaborated
+        categoria.save().then(() =>
+        {
+            req.flash("success_msg", "Ficha editada com sucesso!")
+            res.redirect("/")
+        }).catch((err) =>{
+        req.flash("error_msg","Erro ao editar!")
+            res.redirect("/")
+    })
+    }).catch((err) =>{
+        req.flash("error_msg","Erro ao editar!")
+            res.redirect("/")
+    })
+})
+// Fim Editar Cadastro Todo
+
+
+
+// Inicio Editar Remover Fio
+router.get("/motor/removeWire/add/:id", (req, res) =>{
+    Categoria.findOne({_id:req.params.id}).then((categoria) => {
+        res.render("admin/removeWire", {categoria:categoria})
+    }).catch((err) => {
+        req.flash("error_msg", "Essa categoria não existe")
+        res.redirect("/")
+    }) 
+    
+})
 router.post("/motor/removeWire/add", (req,res) =>{  
     Categoria.findOne({_id: req.body.id}).then((categoria) =>{
         categoria.spirals=req.body.spirals
@@ -499,37 +628,6 @@ router.post("/motor/removeWire/add", (req,res) =>{
             res.redirect("/")
     })
 })
-router.post("/motor/edit", (req,res) =>{
-    Categoria.findOne({_id: req.body.id}).then((categoria) =>{
-        categoria.client= req.body.client
-        categoria.os= req.body.os
-        categoria.proposal= req.body.proposal
-        categoria.engineBrand= req.body.engineBrand
-        categoria.turnedOn= req.body.turnedOn
-        categoria.power= req.body.power
-        categoria.rotation= req.body.rotation
-        categoria.model= req.body.model
-        categoria.boxNumber= req.body.boxNumber
-        categoria.type= req.body.type
-        categoria.connectionBox= req.body.connectionBox
-        categoria.flange= req.body.flange
-        categoria.withFeet= req.body.withFeet
-        categoria.engineStatus= req.body.engineStatus
-        categoria.pulley= req.body.pulley
-        categoria.voltage= req.body.voltage
-        categoria.mountingSide= req.body.mountingSide
-        categoria.save().then(() =>{
-            req.flash("success_msg", "Ficha editada com sucesso!")
-            res.redirect("/")
-        }).catch((err) =>{
-        req.flash("error_msg","Erro ao editar!")
-            res.redirect("/")
-    })
-    }).catch((err) =>{
-        req.flash("error_msg","Erro ao editar!")
-            res.redirect("/")
-    })
-})
-
+// Fim Editar Remover Fio
 
 module.exports = router
